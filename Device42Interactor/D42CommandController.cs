@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Script.Serialization;
 
+
 namespace Device42API{
     /// <summary>
     /// Controller to interact with the Device42 api
@@ -90,8 +91,7 @@ namespace Device42API{
         /// <exception cref="DeserializeExceptionz">Error occurred while converting json string to device list object</exception>
         public D42DeviceList GetAllDevices(){
             //string response = getAllDevices.GetDevices();
-            //string response = "{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"ENCTCAPL095.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 1,\"device_url\": null,\"name\": \"ENCTCAPL099.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 2,\"device_url\": null,\"name\": \"ENCTCAPL125.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null} ]}";
-            string response = "{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"enctcaps055.apps.beta.state.pa.us\",\"serial_no\": null,\"uuid\": null}, {\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"enctcaps059.apps.beta.state.pa.us\",\"serial_no\": null,\"uuid\": null}, {\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"enctcaps060.apps.beta.state.pa.us\",\"serial_no\": null,\"uuid\": null}]}";
+            string response = "{Devices:[]}";
             D42DeviceList deviceList = JsonToObject<D42DeviceList>(response);
 
             allDevices.Clear();
