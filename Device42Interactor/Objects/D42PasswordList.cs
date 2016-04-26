@@ -1,10 +1,13 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Device42API.Objects{
+
+namespace Device42Interactor{
     [Serializable]
     public class D42PasswordList : D42Object{
         public List<D42Password> Passwords = new List<D42Password>();

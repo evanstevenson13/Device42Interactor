@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Device42API.Objects{
+namespace Device42Interactor{
 
     public class D42Device{
         public int? asset_no;

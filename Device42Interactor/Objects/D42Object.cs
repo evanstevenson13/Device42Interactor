@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 
 
-namespace Device42API.Objects {
+namespace Device42Interactor{
     [Serializable]
     public abstract class D42Object{
         //protected List<string> includedObjects = new List<string>();
@@ -30,13 +30,19 @@ namespace Device42API.Objects {
         }
 
 
+        /// <summary>
+        /// Converts the current object to a json string
+        /// </summary>
+        /// <returns>Json string of the current object</returns>
         public virtual string ToJson(){
             return new JavaScriptSerializer().Serialize(this);
         }
 
+
         protected virtual internal bool IsValid(){
             return false;
         }        
+
 
         public virtual string ToPostString(){
             refreshObjectValues();
@@ -73,10 +79,9 @@ namespace Device42API.Objects {
         /// Bind the provided json data to the current object
         /// </summary>
         /// <typeparam name="T">type of object to bind to</typeparam>
-        /// <param name="data">data to be binded to the object</param>
+        /// <param name="jsonData">data to be binded to the object</param>
         /// <returns>The object with the data binded to it</returns>
-        /// <exception cref="DeserializeException">Error occurred creating object from json</exception>
-        //protected internal T JsonToObject<T>(string data){
+        /// <exception cref="DeserializeException">Error occurred binding json data to object</exception>
         public void JsonToObject<T>(string jsonData){          
             try{
                 JavaScriptSerializer serializer = new JavaScriptSerializer();

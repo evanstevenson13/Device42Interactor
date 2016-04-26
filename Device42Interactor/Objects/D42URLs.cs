@@ -1,6 +1,6 @@
 ﻿
 
-namespace Device42API.Objects{
+namespace Device42Interactor{
     /// <summary>
     /// String enum of possible urls for accessing the Device42 api
     /// "https://ip:port/api/1.0/devices/"
@@ -17,7 +17,7 @@ namespace Device42API.Objects{
         /// <summary>
         /// Get: Get a password
         /// </summary>
-        public const string GetPassword = "/api/1.0/passwords/";
+        public const string GetPasswords = "/api/1.0/passwords/";
         /// <summary>
         /// Delete: Delete a password
         /// </summary>

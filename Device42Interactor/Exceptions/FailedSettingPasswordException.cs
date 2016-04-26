@@ -2,7 +2,8 @@
 
 using System;
 
-namespace Device42API {
+
+namespace Device42Interactor{
     class FailedSettingPasswordException : Exception{
         public FailedSettingPasswordException(){
                 

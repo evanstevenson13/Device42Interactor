@@ -1,9 +1,9 @@
 ﻿
 
 
-namespace Device42API.Objects{
+namespace Device42Interactor{
     class D42Message{
-        public int? code;
+        public int? code = 0;
         public string msg = string.Empty;
 
         public D42Message(){}

@@ -4,7 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Security;
 
-namespace Device42API.Objects{
+
+namespace Device42Interactor{
 
     /// <summary>
     /// A D42 password object that can be sent to D42 to create/change a password

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Device42Interactor</RootNamespace>
     <AssemblyName>Device42Interactor</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,16 +23,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Release\Device42Interactor.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HttpCommand">
-      <HintPath>..\..\HttpCommand\HttpCommand\bin\Release\HttpCommand.dll</HintPath>
+    <Reference Include="HttpCommand, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\HttpCommand.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,14 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D42Commands.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\Command_GetAllDevices.cs" />
     <Compile Include="Commands\Command_GetPassword.cs" />
     <Compile Include="Commands\Command_SetPassword.cs" />
     <Compile Include="D42CommandController.cs" />
+    <Compile Include="Exceptions\RequestFailedException.cs" />
     <Compile Include="Exceptions\DeserializeException.cs" />
     <Compile Include="Exceptions\FailedGettingDeviceListException.cs" />
-    <Compile Include="Exceptions\FailedGettingPasswordException.cs" />
+    <Compile Include="Exceptions\FailedGettingPasswordListException.cs" />
     <Compile Include="Exceptions\FailedSettingPasswordException.cs" />
     <Compile Include="Objects\D42Device.cs" />
     <Compile Include="Objects\D42DeviceList.cs" />
@@ -62,6 +69,10 @@
     <Compile Include="Objects\D42PasswordList.cs" />
     <Compile Include="Objects\D42URLs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DLL\HttpCommand.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

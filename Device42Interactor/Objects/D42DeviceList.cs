@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Device42API.Objects{
+using System.Collections.Generic;
+
+
+namespace Device42Interactor{
+    /// <summary>
+    /// General object for something in Device42
+    /// </summary>
     public class D42DeviceList : D42Object{
         public List<D42Device> devices = new List<D42Device>();
 

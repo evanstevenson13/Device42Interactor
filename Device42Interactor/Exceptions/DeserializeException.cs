@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Device42API {
+namespace Device42Interactor {
     class DeserializeException:Exception{
         public DeserializeException(){
                 
