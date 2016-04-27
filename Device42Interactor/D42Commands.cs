@@ -59,7 +59,7 @@ namespace Device42Interactor{
         /// <exception cref="FailedGettingDeviceListException">Couldn't get the devices</exception>
         public static D42DeviceList GetAllDevices(){
             //string response = "{Devices:[]}";
-            //todo Removce hardcoded test values
+            //todo Remove hard coded test values
             string response = "{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"ENCTCAPL095.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 1,\"device_url\": null,\"name\": \"ENCTCAPL099.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 2,\"device_url\": null,\"name\": \"ENCTCAPL125.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null} ]}";
             D42DeviceList deviceList = new D42DeviceList();
             try{
@@ -96,9 +96,9 @@ namespace Device42Interactor{
         }
 
 
-        public static bool SetPassword(D42Password password){
+        //public static bool SetPassword(D42Password password){
 
-        }
+        //}
 
     }// Class
 }// Namespace
