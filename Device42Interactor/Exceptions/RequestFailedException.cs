@@ -4,7 +4,7 @@ using System;
 
 
 namespace Device42Interactor{
-    class RequestFailedException : Exception{
+    public class RequestFailedException : Exception{
         public RequestFailedException(){
                 
         }

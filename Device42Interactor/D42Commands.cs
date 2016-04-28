@@ -35,7 +35,6 @@ namespace Device42Interactor{
         }
 
 
-        //todo throw exception if setup is incorrect
         /// <summary>
         /// Set up Device42Interactor so you can send commands to it
         /// </summary>

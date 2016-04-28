@@ -2,8 +2,9 @@
 
 using System;
 
+
 namespace Device42Interactor {
-    class DeserializeException:Exception{
+    public class DeserializeException : Exception{
         public DeserializeException(){
                 
         }

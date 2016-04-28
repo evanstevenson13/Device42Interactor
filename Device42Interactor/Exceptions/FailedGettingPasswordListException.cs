@@ -4,7 +4,7 @@ using System;
 
 
 namespace Device42Interactor{
-    class FailedGettingPasswordListException:Exception{
+    public class FailedGettingPasswordListException : Exception{
         public FailedGettingPasswordListException(){
                 
         }

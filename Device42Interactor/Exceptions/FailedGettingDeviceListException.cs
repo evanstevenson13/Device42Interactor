@@ -4,7 +4,7 @@ using System;
 
 
 namespace Device42Interactor{
-    class FailedGettingDeviceListException:Exception{
+    public class FailedGettingDeviceListException : Exception{
         public FailedGettingDeviceListException(){
                 
         }

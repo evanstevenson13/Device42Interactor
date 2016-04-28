@@ -2,8 +2,9 @@
 
 using System;
 
+
 namespace Device42Interactor {
-    class InvalidInitializeException:Exception{
+    public class InvalidInitializeException : Exception{
         public InvalidInitializeException(){
                 
         }
