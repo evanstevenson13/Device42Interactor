@@ -3,6 +3,7 @@
 using HttpCommand;
 using HttpCommands.Objects;
 using System;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Web;
 
@@ -36,6 +37,7 @@ namespace Device42Interactor.Commands{
                 , authHeader
             );
             
+            AuthenticationHeaderValue auth = requestData.GetHeader();
 
             try{
                 responseText = HttpRunner.SendHttpRequest(requestData);

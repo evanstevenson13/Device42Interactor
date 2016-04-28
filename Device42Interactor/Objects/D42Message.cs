@@ -1,7 +1,10 @@
 ﻿
 
 
+using System;
+
 namespace Device42Interactor{
+    [Serializable]
     class D42Message{
         public int? code = 0;
         public string msg = string.Empty;

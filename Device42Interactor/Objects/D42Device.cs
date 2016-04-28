@@ -3,7 +3,7 @@
 using System;
 
 namespace Device42Interactor{
-
+    [Serializable]
     public class D42Device{
         public int? asset_no;
         public int? device_id;

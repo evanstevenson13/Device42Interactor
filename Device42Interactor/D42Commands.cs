@@ -1,6 +1,7 @@
 ﻿
 
 using Device42Interactor.Commands;
+using HttpCommand;
 using HttpCommands.Objects;
 using System;
 using System.Web;
@@ -13,12 +14,18 @@ namespace Device42Interactor{
         private static string username = string.Empty;
         private static string password = string.Empty;
         private static AuthenticationHeader authHeader = null;
+        private static string serverResponse = string.Empty;
         
 
             // Commands that can be called
         private static Command_GetAllDevices getAllDevices;
         private static Command_SetPassword setPassword;
         private static Command_GetPassword getPasswords;
+
+
+        public static string GetResponse(){
+            return serverResponse;
+        }
 
 
         //todo throw exception if setup is incorrect
@@ -58,14 +65,16 @@ namespace Device42Interactor{
         /// <returns>List of D42 devices</returns>
         /// <exception cref="FailedGettingDeviceListException">Couldn't get the devices</exception>
         public static D42DeviceList GetAllDevices(){
+            string response = string.Empty;
             //string response = "{Devices:[]}";
             //todo Remove hard coded test values
-            string response = "{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"ENCTCAPL095.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 1,\"device_url\": null,\"name\": \"ENCTCAPL099.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 2,\"device_url\": null,\"name\": \"ENCTCAPL125.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null} ]}";
             D42DeviceList deviceList = new D42DeviceList();
             try{
                 response = getAllDevices.Execute();
+                response="{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"ENCTCAPL095.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 1,\"device_url\": null,\"name\": \"ENCTCAPL099.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 2,\"device_url\": null,\"name\": \"ENCTCAPL125.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null} ]}";
                 deviceList.JsonToObject<D42DeviceList>(response);
             }catch(Exception excep){
+                serverResponse = HttpRunner.GetResponse();
                 throw new FailedGettingDeviceListException("Could not get devices", excep);
             }
 
