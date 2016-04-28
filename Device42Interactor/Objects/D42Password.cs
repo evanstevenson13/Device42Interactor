@@ -66,9 +66,15 @@ namespace Device42Interactor{
             return true;
         }   
 
+
+        /// <summary>
+        /// A caller to the json binder so the caller does not need to provide the type
+        /// </summary>
+        /// <param name="jsonData">The json data to be binded to this object</param>
         public void JsonToObject(string jsonData){
             JsonToObject<D42Password>(jsonData);
         }
+
 
         /// <summary>
         /// Provides a string representation of the object

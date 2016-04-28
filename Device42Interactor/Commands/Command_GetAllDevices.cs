@@ -29,9 +29,8 @@ namespace Device42Interactor.Commands{
         /// <exception cref="RequestFailedException">The http request failed while trying to get the device list</exception>
         public override string Execute(){
             responseText = string.Empty;
-            HttpRequestInfo requestData = null;
 
-            requestData = new HttpRequestInfo(
+            HttpRequestInfo requestData = new HttpRequestInfo(
                 string.Concat(serverAddress, D42URLs.AllDevices)
                 , RequestType.Get
                 , authHeader
@@ -44,7 +43,6 @@ namespace Device42Interactor.Commands{
             }catch(Exception excep){
                 throw new RequestFailedException("Request to get all devices failed", excep);
             }
-
 
             return responseText;
         }

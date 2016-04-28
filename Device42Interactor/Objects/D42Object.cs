@@ -10,15 +10,26 @@ using System.Web.Script.Serialization;
 
 
 namespace Device42Interactor{
+    /// <summary>
+    /// General Properties and methods for all objects
+    /// </summary>
     [Serializable]
     public abstract class D42Object{
-        //protected List<string> includedObjects = new List<string>();
+        /// <summary>
+        /// Dictionary of the class fields and thier values
+        /// </summary>
         protected Dictionary<string, object> classValues = new Dictionary<string, object>();
 
 
+        /// <summary>
+        /// Empty constructor since the class intherting will define their own
+        /// </summary>
         public D42Object(){}
 
 
+        /// <summary>
+        /// Refreshs the dictonary object of variables and their values
+        /// </summary>
         protected void refreshObjectValues(){
             //List<PropertyInfo> classProperties = this.GetType().GetProperties(BindingFlags.NonPublic).ToList();
             //todo check if exists and update it instead of clearing it
@@ -39,11 +50,20 @@ namespace Device42Interactor{
         }
 
 
+        //todo Remove this
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected virtual internal bool IsValid(){
             return false;
         }        
 
 
+        /// <summary>
+        /// Converts to object into a string that can be sent in a post request
+        /// </summary>
+        /// <returns>Query string representation of the object</returns>
         public virtual string ToPostString(){
             refreshObjectValues();
             string postString = string.Empty;

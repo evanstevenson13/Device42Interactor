@@ -5,20 +5,20 @@ using System;
 
 namespace Device42Interactor{
     /// <summary>
-    /// Exception thats thrown when the command controller was initialized incorrectly
+    /// Exception thats thrown when no password is provided to the set password command
     /// </summary>
-    public class InvalidInitializeException : Exception{
+    public class NoPasswordProvidedException : Exception{
         /// <summary>
         /// Constructor
         /// </summary>
-        public InvalidInitializeException(){}
+        public NoPasswordProvidedException(){}
 
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="message">Message to explain exception</param>
-        public InvalidInitializeException(string message):base(message){}
+        public NoPasswordProvidedException(string message):base(message){}
 
 
         /// <summary>
@@ -26,6 +26,6 @@ namespace Device42Interactor{
         /// </summary>
         /// <param name="message">Message to explain exception</param>
         /// <param name="inner">Exception to add to this exception</param>
-        public InvalidInitializeException(string message, Exception inner):base(message, inner){}
+        public NoPasswordProvidedException(string message, Exception inner):base(message, inner){}
     }
 }

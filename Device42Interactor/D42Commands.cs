@@ -1,9 +1,9 @@
 ﻿
 
 using Device42Interactor.Commands;
-using HttpCommand;
 using HttpCommands.Objects;
 using System;
+using System.Net.Http.Headers;
 using System.Web;
 
 
@@ -21,9 +21,24 @@ namespace Device42Interactor{
         
 
             // Commands that can be called
-        private static Command_GetAllDevices getAllDevices;
-        private static Command_SetPassword setPassword;
-        private static Command_GetPassword getPasswords;
+        private static Command_GetAllDevices getAllDevices = null;
+        private static Command_SetPassword setPassword = null;
+        private static Command_GetPassword getPasswords = null;
+
+
+        /// <summary>
+        /// Provides the server address that its using
+        /// </summary>
+        /// <returns>The server address</returns>
+        public static string GetServerAddress(){
+            string serverAddress = string.Empty;
+            if(string.IsNullOrEmpty(port)){
+                serverAddress = string.Concat(address, ":", port);
+            }else{
+                serverAddress = address;
+            }
+            return serverAddress;
+        }
 
 
         /// <summary>
@@ -62,7 +77,7 @@ namespace Device42Interactor{
                 throw new InvalidInitializeException("No server address provided");
             }
                 
-            if(authHeader == null){
+            if(authHeader.GetHeader() == null){
                 throw new InvalidInitializeException("No authentication header created");
             }
 
@@ -85,10 +100,10 @@ namespace Device42Interactor{
             D42DeviceList deviceList = new D42DeviceList();
             try{
                 response = getAllDevices.Execute();
-                response="{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"ENCTCAPL095.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 1,\"device_url\": null,\"name\": \"ENCTCAPL099.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 2,\"device_url\": null,\"name\": \"ENCTCAPL125.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null} ]}";
+                response = "{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"ENCTCAPL095.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 1,\"device_url\": null,\"name\": \"ENCTCAPL099.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 2,\"device_url\": null,\"name\": \"ENCTCAPL125.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null} ]}";
                 deviceList.JsonToObject<D42DeviceList>(response);
             }catch(Exception excep){
-                serverResponse = HttpRunner.GetResponse();
+                serverResponse = getAllDevices.GetResponseText();
                 throw new FailedGettingDeviceListException("Could not get devices", excep);
             }
 
@@ -111,7 +126,8 @@ namespace Device42Interactor{
                     response = getPasswords.Execute();
                     passwordList.JsonToObject<D42PasswordList>(response);
                 }catch(Exception excep){
-                    throw new FailedGettingPasswordListException("Could not get passwords for the provided device",excep);
+                    serverResponse = getPasswords.GetResponseText();
+                    throw new FailedGettingPasswordListException("Could not get passwords for the provided device", excep);
                 }
             }
 
@@ -119,9 +135,26 @@ namespace Device42Interactor{
         }
 
 
-        //public static bool SetPassword(D42Password password){
-
-        //}
+        /// <summary>
+        /// Set the provided password
+        /// </summary>
+        /// <param name="password">Password properties to create/update</param>
+        /// <returns>True if create/update was successfull</returns>
+        /// /// <exception cref="FailedSettingPasswordException">Couldn't set the password for the device</exception>
+        public static bool SetPassword(D42Password password){
+            string response = string.Empty;
+            if(password != null){
+                try{
+                    setPassword.SetParameters(password);
+                    response = setPassword.Execute();
+                    return true;
+                }catch(Exception excep){
+                    serverResponse = setPassword.GetResponseText();
+                    throw new FailedSettingPasswordException("Could not set the password for the provided device", excep);
+                }
+            }
+            return false;
+        }
 
     }// Class
 }// Namespace

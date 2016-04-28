@@ -55,6 +55,7 @@
     <Compile Include="Commands\Command_GetPassword.cs" />
     <Compile Include="Commands\Command_SetPassword.cs" />
     <Compile Include="D42CommandController.cs" />
+    <Compile Include="Exceptions\NoPasswordProvidedException.cs" />
     <Compile Include="Exceptions\InvalidInitializeException.cs" />
     <Compile Include="Exceptions\FailedGettingPasswordListException.cs" />
     <Compile Include="Exceptions\RequestFailedException.cs" />
