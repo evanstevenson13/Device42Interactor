@@ -55,11 +55,12 @@
     <Compile Include="Commands\Command_GetPassword.cs" />
     <Compile Include="Commands\Command_SetPassword.cs" />
     <Compile Include="D42CommandController.cs" />
+    <Compile Include="Exceptions\InvalidInitializeException.cs" />
+    <Compile Include="Exceptions\FailedGettingPasswordListException.cs" />
     <Compile Include="Exceptions\RequestFailedException.cs" />
     <Compile Include="Exceptions\DeserializeException.cs" />
     <Compile Include="Exceptions\FailedGettingDeviceListException.cs" />
     <Compile Include="Exceptions\FailedSettingPasswordException.cs" />
-    <Compile Include="FailedGettingPasswordListException.cs" />
     <Compile Include="Objects\D42Device.cs" />
     <Compile Include="Objects\D42DeviceList.cs" />
     <Compile Include="Objects\D42Message.cs" />

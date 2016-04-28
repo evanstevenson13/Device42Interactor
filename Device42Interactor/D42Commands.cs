@@ -8,6 +8,9 @@ using System.Web;
 
 
 namespace Device42Interactor{
+    /// <summary>
+    /// Allows commands to be called to interact with Device42
+    /// </summary>
     public static class D42Commands{
         private static string address = string.Empty;
         private static string port = string.Empty;
@@ -23,6 +26,10 @@ namespace Device42Interactor{
         private static Command_GetPassword getPasswords;
 
 
+        /// <summary>
+        /// Returns the server response so you can look at unexpected errors
+        /// </summary>
+        /// <returns>Response from the server</returns>
         public static string GetResponse(){
             return serverResponse;
         }
@@ -36,7 +43,7 @@ namespace Device42Interactor{
         /// <param name="port">Port used to access Device42</param>
         /// <param name="username">Username used to access Device42</param>
         /// <param name="password">Password used to access Device42</param>
-        /// <exception cref="">Set up parameters were incorrect</exception>
+        /// <exception cref="InvalidInitializeException">Set up parameters were incorrect</exception>
         public static void Initialize(string address, string port, string username, string password){
             D42Commands.address = address;
             D42Commands.port = port;
@@ -51,6 +58,14 @@ namespace Device42Interactor{
             }
 
             authHeader =  new AuthenticationHeader(username, password);
+
+            if(string.IsNullOrEmpty(serverAddress)){
+                throw new InvalidInitializeException("No server address provided");
+            }
+                
+            if(authHeader == null){
+                throw new InvalidInitializeException("No authentication header created");
+            }
 
                 // Set Commands
             getAllDevices = new Command_GetAllDevices(serverAddress, authHeader);
