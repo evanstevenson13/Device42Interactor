@@ -12,15 +12,45 @@ namespace Device42Interactor{
     /// </summary>
     [Serializable]
     public class D42Password : D42Object{
+        /// <summary>
+        /// Id of the password
+        /// </summary>
         public int? id;
+        /// <summary>
+        /// Username for the password
+        /// </summary>
         public string username = string.Empty;
+        /// <summary>
+        /// Password for the password
+        /// </summary>
         public string password = string.Empty;
+        /// <summary>
+        /// Label for the password
+        /// </summary>
         public string label = string.Empty;
+        /// <summary>
+        /// Notes for the password
+        /// </summary>
         public string notes = string.Empty;
+        /// <summary>
+        /// View edit groups of the password
+        /// </summary>
         public string view_edit_users = string.Empty;
+        /// <summary>
+        /// View groups of the password
+        /// </summary>
         public string view_groups = string.Empty;
+        /// <summary>
+        /// Devices that belong to the password
+        /// </summary>
         public List<string> devices = new List<string>();
+        /// <summary>
+        /// Date the password was first added
+        /// </summary>
         public DateTime first_added;
+        /// <summary>
+        /// Date the password was last changed
+        /// </summary>
         public DateTime last_pw_change;
 
 
@@ -43,24 +73,12 @@ namespace Device42Interactor{
         }
 
 
-        //public override string ToPostString(){
-        //    //string deviceList = string.Join(",", devices.ToArray());
-        //    //return string.Concat("Password Info(username, password, devices):\t", username, "\t", password, "\t", deviceList);
-        //    objectValues();
-        //    string final = string.Empty;
-        //    final = "Object size(" + classValues.Count + "):  ";
-        //    foreach(KeyValuePair<string, object> item in classValues) {
-        //        final += item.Key + ":" + item.Value;
-        //    }
-        //    return final;
-        //}
-
-
+        /// <summary>
+        /// Checks if the object has everything to be considered valid
+        /// </summary>
+        /// <returns>Status of if the object is valid</returns>
         protected internal override bool IsValid(){
-            if(string.IsNullOrEmpty(username)){
-                return false;
-            }
-            if(string.IsNullOrEmpty(password)){
+            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)){
                 return false;
             }
             return true;
@@ -79,7 +97,7 @@ namespace Device42Interactor{
         /// <summary>
         /// Provides a string representation of the object
         /// </summary>
-        /// <returns>string representing the object</returns>
+        /// <returns>String representing the object</returns>
         public override string ToString(){
             string deviceList = string.Join(",", devices.ToArray());
             return string.Concat("Password Info(username, password, devices):\t", username, ",\t", password, ",\t", deviceList);

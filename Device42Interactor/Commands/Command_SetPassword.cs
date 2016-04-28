@@ -24,7 +24,7 @@ namespace Device42Interactor.Commands{
         /// <summary>
         /// Set the parameters for the get password command
         /// </summary>
-        /// <param name="parameters">Parameters to add to the request</param>
+        /// <param name="password">Parameters to add to the request</param>
         public void SetParameters(D42Password password){
             commandParameters = password;
         }
@@ -60,31 +60,5 @@ namespace Device42Interactor.Commands{
 
             return responseText;
         }
-
-
-        /// <summary>
-        /// Attempts to create/change the a device 42 password
-        /// </summary>
-        /// <param name="password">The password object(username, password, devices)</param>
-        /// <returns>Indication if the opertion was successful</returns>
-        /// <exception cref="FailedSettingPasswordException">Password was not set because of a http request error</exception>
-        //protected internal bool SetPassword(D42Password password){
-        //    HttpRequestInfo requestData = null;
-            
-        //    requestData=new HttpRequestInfo(
-        //        string.Concat(serverAddress, D42URLs.SetPassword)
-        //        , RequestType.Post
-        //        , new HttpContentToSend(password.ToPostString(), Encoding.UTF8, ContentType.PostForm)
-        //        , authHeader
-        //    );
-
-        //    try {
-        //        response = HttpRunner.SendHttpRequest(requestData);
-        //    }catch(Exception excep){
-        //        throw new FailedSettingPasswordException("The password could not be created/updated", excep);
-        //    }
-
-        //    return true;
-        //}
     }
 }
