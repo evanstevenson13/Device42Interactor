@@ -37,7 +37,7 @@ namespace Device42Interactor.Commands{
         /// <exception cref="NoPasswordProvidedException">No password was provided to be created/updated</exception>
         /// <exception cref="RequestFailedException">The http request failed while trying to create/update the password</exception>
         public override string Execute(){
-            if(commandParameters == null){
+            if(commandParameters == null || string.IsNullOrEmpty(commandParameters.password)){
                 throw new NoPasswordProvidedException("No password was given to be created/updated");
             }
             responseText = string.Empty;
