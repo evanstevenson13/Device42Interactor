@@ -94,13 +94,13 @@ namespace Device42Interactor{
         /// <returns>List of D42 devices</returns>
         /// <exception cref="FailedGettingDeviceListException">Couldn't get the devices</exception>
         public static D42DeviceList GetAllDevices(){
-            string response = string.Empty;
-            //string response = "{Devices:[]}";
+            //string response = string.Empty;
+            string response = "{Devices:[]}";
             //todo Remove hard coded test values
             D42DeviceList deviceList = new D42DeviceList();
             try{
                 response = getAllDevices.Execute();
-                response = "{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"ENCTCAPL095.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 1,\"device_url\": null,\"name\": \"ENCTCAPL099.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 2,\"device_url\": null,\"name\": \"ENCTCAPL125.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null} ]}";
+                //response = "{\"Devices\": [{\"asset_no\": null,\"device_id\": 0,\"device_url\": null,\"name\": \"ENCTCAPL095.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 1,\"device_url\": null,\"name\": \"ENCTCAPL099.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null},{\"asset_no\": null,\"device_id\": 2,\"device_url\": null,\"name\": \"ENCTCAPL125.labapps.state.pa.us\",\"serial_no\": null,\"uuid\": null} ]}";
                 deviceList.JsonToObject<D42DeviceList>(response);
             }catch(Exception excep){
                 serverResponse = getAllDevices.GetResponseText();
