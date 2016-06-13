@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Command_SetDeviceCustomField.cs" />
     <Compile Include="D42Commands.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\Command_GetAllDevices.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Objects\D42DeviceList.cs" />
     <Compile Include="Objects\D42Message.cs" />
     <Compile Include="Objects\D42Object.cs" />
+    <Compile Include="Objects\D42DeviceCustomField.cs" />
     <Compile Include="Objects\D42Password.cs" />
     <Compile Include="Objects\D42PasswordList.cs" />
     <Compile Include="Objects\D42URLs.cs" />

@@ -52,7 +52,10 @@ namespace Device42Interactor{
         /// Date the password was last changed
         /// </summary>
         public DateTime last_pw_change;
-
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public string plain_text = "yes";
 
         /// <summary>
         /// Creates a empty D42 password object that can be sent to D42 to create/change a password

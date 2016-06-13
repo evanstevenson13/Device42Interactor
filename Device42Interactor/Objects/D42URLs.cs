@@ -22,5 +22,7 @@ namespace Device42Interactor{
         /// Delete: Delete a password
         /// </summary>
         public const string DeletePassword = "/api/1.0/passwords/";
+
+        public const string CustomField = "/api/1.0/device/custom_field/";
     }
 }

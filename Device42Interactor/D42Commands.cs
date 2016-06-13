@@ -24,6 +24,7 @@ namespace Device42Interactor{
         private static Command_GetAllDevices getAllDevices = null;
         private static Command_SetPassword setPassword = null;
         private static Command_GetPassword getPasswords = null;
+        private static Command_SetDeviceCustomField setDeviceCustomField = null;
 
 
         /// <summary>
@@ -85,6 +86,7 @@ namespace Device42Interactor{
             getAllDevices = new Command_GetAllDevices(serverAddress, authHeader);
             setPassword = new Command_SetPassword(serverAddress, authHeader);
             getPasswords = new Command_GetPassword(serverAddress, authHeader);
+            setDeviceCustomField = new Command_SetDeviceCustomField(serverAddress, authHeader);
         }
 
 
@@ -122,7 +124,7 @@ namespace Device42Interactor{
             D42PasswordList passwordList = new D42PasswordList();
             if(!string.IsNullOrEmpty(deviceName)){
                 try{
-                    getPasswords.SetParameters(string.Concat("device=", HttpUtility.UrlEncode(deviceName)));
+                    getPasswords.SetParameters(string.Concat("device=", HttpUtility.UrlEncode(deviceName), "&plain_text=", HttpUtility.UrlEncode("yes")));
                     response = getPasswords.Execute();
                     passwordList.JsonToObject<D42PasswordList>(response);
                 }catch(Exception excep){
@@ -151,6 +153,24 @@ namespace Device42Interactor{
                 }catch(Exception excep){
                     serverResponse = setPassword.GetResponseText();
                     throw new FailedSettingPasswordException("Could not set the password for the provided device", excep);
+                }
+            }
+            return false;
+        }
+
+
+        
+        public static bool SetCustomField(D42DeviceCustomField customField){
+            string response = string.Empty;
+            if (customField != null){
+                try{
+                    setDeviceCustomField.SetParameters(customField);
+                    response = setDeviceCustomField.Execute();
+                    return true;
+                }catch (Exception excep){
+                    serverResponse = setPassword.GetResponseText();
+                    //throw new FailedSettingPasswordException("Could not set the password for the provided device", excep);
+                    //TODO: add correct exception
                 }
             }
             return false;
